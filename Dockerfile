@@ -9,4 +9,7 @@ ENV MLFLOW_SERVER_SKIP_HOST_CHECK=true
 ENV GUNICORN_CMD_ARGS="--bind 0.0.0.0:8080 --forwarded-allow-ips='*' --timeout 180 --workers 2"
 
 # Run MLflow via gunicorn WSGI app
-CMD gunicorn mlflow.server:app
+CMD mlflow server \
+  --host 0.0.0.0 \
+  --port 8080 \
+  --serve-artifacts
